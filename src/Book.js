@@ -8,11 +8,17 @@ class Book extends React.Component{
     }
 
     render(){
+
+        if(this.props.book.imageLinks === undefined ) {
+            this.props.book.imageLinks = ['smallThumbnail'];
+            this.props.book.imageLinks.smallThumbnail = 'https://library.britishcouncil.org.in/static-content/isbn/noimage.jpg';
+        }
+
         return(
             <li>
                 <div className="book">
                     <div className="book-top">
-                    <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${this.props.book.imageLinks.smallThumbnail})` }}></div>
+                    <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${this.props.book.imageLinks.smallThumbnail})`}}></div>
                     <div className="book-shelf-changer">
                         <select onChange={this.changeShelf} value={this.props.book.shelf || 'none'}>
                         <option value="move" disabled>Move to...</option>

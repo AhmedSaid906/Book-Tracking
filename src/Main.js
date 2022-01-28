@@ -28,7 +28,8 @@ class Main extends React.Component{
 }
 
 Main.propTypes ={
-  books: PropTypes.array.isRequired
+  books: PropTypes.array.isRequired,
+  changeShelfHandler: PropTypes.func.isRequired
 }
 
 export default Main

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 class Shelf extends React.Component{
 
     //Filter the recieved books due to their shelfs in the API
-    filteredBooks = this.props.books.filter((book)=> book.shelf===this.props.shelf)
+    // filteredBooks = this.props.books.filter((book)=> book.shelf===this.props.shelf)
 
     render(){
         return(
@@ -13,7 +13,7 @@ class Shelf extends React.Component{
                 <h2 className="bookshelf-title">{this.props.title}</h2>
                 <div className="bookshelf-books">
                 <ol className="books-grid">
-                    {this.filteredBooks.map((book)=>(
+                    {this.props.books.filter((book)=> book.shelf===this.props.shelf).map((book)=>(
                         <Book book= {book} changeShelfHandler={this.props.changeShelfHandler} key={book.id}/>
                     ))}
                 </ol>

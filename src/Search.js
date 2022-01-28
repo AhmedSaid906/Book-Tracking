@@ -2,7 +2,7 @@ import React from 'react'
 import './App.css'
 import {Link} from 'react-router-dom'
 import Book from './Book';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 
 class Search extends React.Component{
@@ -26,12 +26,19 @@ class Search extends React.Component{
             </div>
             <div className="search-books-results">
               <ol className="books-grid">
-                {this.props.searchedBooks.map((book)=> <Book book={book} changeShelfHandler={this.props.changeShelfHandler} key={book.id}/>)}
+                {Array.isArray(this.props.searchedBooks) && this.props.searchedBooks.map((book)=> <Book book={book} changeShelfHandler={this.props.changeShelfHandler} key={book.id}/>)}
               </ol>
             </div>
           </div>
         );
     }
+}
+
+Search.propTypes ={
+  searchHandler: PropTypes.func.isRequired,
+  search: PropTypes.string.isRequired,
+  searchedBooks: PropTypes.array.isRequired,
+  changeShelfHandler: PropTypes.func.isRequired
 }
 
 export default Search

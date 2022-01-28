@@ -10,7 +10,6 @@ class BooksApp extends React.Component {
     books: [],
     search: '',
     searchedBooks: [],
-    test: false
   }
 
     componentDidMount(){
@@ -24,13 +23,12 @@ class BooksApp extends React.Component {
     await BooksAPI.getAll().then((res)=>{
       this.setState({books: res})
     })
-     this.state.test = this.state.test ? false : true;
 }
 
   searchHandler = async (e) =>{
     await this.setState({search: e.target.value})
     await BooksAPI.search(this.state.search).then((res)=>{
-      if(res){
+      if(res && Array.isArray(res)){
         res.map((searchedBook)=>{
           this.state.books.forEach((book)=>{
               if(searchedBook.id === book.id){
