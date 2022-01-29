@@ -37,7 +37,6 @@ class Search extends React.Component{
 Search.propTypes ={
   searchHandler: PropTypes.func.isRequired,
   search: PropTypes.string.isRequired,
-  searchedBooks: PropTypes.array.isRequired,
   changeShelfHandler: PropTypes.func.isRequired
 }
 
